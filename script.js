@@ -30,7 +30,6 @@ function windowResized() {
     initGrid();
 }
 
-// --- [추가] 모바일 확대/축소 감지 로직 ---
 function touchMoved() {
     // 손가락이 2개일 때만 확대/축소를 계산해요.
     if (touches.length === 2) {
@@ -38,16 +37,17 @@ function touchMoved() {
         let currentDist = dist(touches[0].x, touches[0].y, touches[1].x, touches[1].y);
 
         if (lastDist > 0) {
-            // 직전 거리보다 멀어지면(확대) 글자를 키우고, 가까워지면(축소) 글자를 작게(더 많이) 만들어요.
+            // 거리가 멀어지면(확대) 글자 크기(resolution)를 키우고,
+            // 거리가 가까워지면(축소) 글자 크기를 작게 만듭니다.
             let diff = currentDist - lastDist;
 
-            // 축소하면 resolution이 작아져서 글자가 더 촘촘해집니다.
-            resolution -= diff * 0.1;
+            // [수정 포인트] -= 를 += 로 변경하여 손가락 움직임 방향과 글자 크기 변화를 일치시켰습니다.
+            resolution += diff * 0.1;
 
-            // 너무 작아지거나 커지지 않게 제한을 둬요 (5~100 사이)
+            // 너무 작아지거나 커지지 않게 제한 (최소 10, 최대 80)
             resolution = constrain(resolution, 10, 80);
 
-            // 변화가 생겼으니 격자를 다시 그려요.
+            // 변화가 생겼으니 격자를 다시 그려서 글자를 채워넣어요.
             initGrid();
         }
         lastDist = currentDist;
