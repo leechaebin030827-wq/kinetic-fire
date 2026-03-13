@@ -245,7 +245,7 @@ class Cell {
             scaleAmount = 1.15 + sin(frameCount * 0.2 + this.offset) * 0.1;
 
             // 몽환적인 글로우(Glow) 효과 추가 (V2)
-            drawingContext.shadowBlur = 25; // 불타는 동안 빛이 번짐
+            drawingContext.shadowBlur = 50; // 불타는 동안 빛이 번짐
             drawingContext.shadowColor = col.toString();
         } else if (this.state === 'ASH') {
             col = color('#1a1a1a'); // 타버린 재(어두운 색)
