@@ -241,7 +241,7 @@ class Cell {
         } else if (this.state === 'BURNING') {
             let phase = this.burnTime / this.maxBurnTime;
             // 타는 단계에 따라 흰색 -> 노랑 -> 빨강으로 변해요.
-            col = phase < 0.1 ? color('#f2f2f2') : lerpColor(color('#ffcc00'), color('#ff0000'), phase);
+            col = phase < 0.1 ? color('#D9D9D9') : lerpColor(color('#ffcc00'), color('#ff0000'), phase);
             scaleAmount = 1.15 + sin(frameCount * 0.2 + this.offset) * 0.1;
         } else if (this.state === 'ASH') {
             col = color('#1a1a1a'); // 타버린 재(어두운 색)
