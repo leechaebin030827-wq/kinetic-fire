@@ -8,10 +8,12 @@ html {
     background-color: #000;
     color: #fff;
     font-family: "Noto Serif JP", serif;
+    cursor: none !important;
 }
 
 canvas {
     display: block;
+    cursor: none !important;
 }
 
 @media (max-width: 768px) or (pointer: coarse) {
