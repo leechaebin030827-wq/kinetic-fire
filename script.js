@@ -243,8 +243,17 @@ class Cell {
             // 타는 단계에 따라 흰색 -> 노랑 -> 빨강으로 변해요.
             col = phase < 0.1 ? color('#D9D9D9') : lerpColor(color('#ffcc00'), color('#ff0000'), phase);
             scaleAmount = 1.15 + sin(frameCount * 0.2 + this.offset) * 0.1;
+
+            // 몽환적인 글로우(Glow) 효과 추가 (V2)
+            drawingContext.shadowBlur = 40; // 불타는 동안 빛이 번짐
+            drawingContext.shadowColor = col.toString();
         } else if (this.state === 'ASH') {
             col = color('#1a1a1a'); // 타버린 재(어두운 색)
+        }
+
+        // BURNING 상태가 아닐 때는 글로우 효과 제거
+        if (this.state !== 'BURNING') {
+            drawingContext.shadowBlur = 0;
         }
 
         scale(scaleAmount);
