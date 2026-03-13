@@ -18,7 +18,7 @@ function setup() {
     canvas.style('display', 'block');
     canvas.style('touch-action', 'none'); // 모바일 브라우저의 기본 줌 기능을 꺼서 우리 코드가 작동하게 해요.
 
-    textFont('Liu Jian Mao Cao'); // 붓글씨 폰트를 불러와요.
+    textFont('Noto Serif JP'); // 폰트를 Noto Serif JP로 변경해요.
     textAlign(CENTER, CENTER);    // 글자를 가운데 정렬해요.
     initGrid();                   // 글자들을 화면에 배치해요.
 
