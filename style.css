@@ -13,3 +13,9 @@ html {
 canvas {
     display: block;
 }
+
+@media (max-width: 768px) or (pointer: coarse) {
+    .cursor {
+        display: none;
+    }
+}
